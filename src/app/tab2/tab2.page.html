@@ -1,8 +1,6 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
-    <ion-title>
-      Tab 2
-    </ion-title>
+    <ion-title> Tab 2 </ion-title>
   </ion-toolbar>
 </ion-header>
 
@@ -13,5 +11,19 @@
     </ion-toolbar>
   </ion-header>
 
-  <app-explore-container name="Tab 2 page"></app-explore-container>
+  <ion-refresher slot="fixed" (ionRefresh)="handleRefresh($event)">
+    <ion-refresher-content></ion-refresher-content>
+  </ion-refresher>
+
+  <ion-list>
+    <ion-item *ngFor="let item of [].constructor(20)">
+      <ion-avatar slot="start">
+        <ion-img src="https://i.pravatar.cc/300?u=b"></ion-img>
+      </ion-avatar>
+      <ion-label>
+        <h2>Connor Smith</h2>
+        <p>Sales Rep</p>
+      </ion-label>
+    </ion-item>
+  </ion-list>
 </ion-content>
