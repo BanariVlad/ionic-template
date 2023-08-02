@@ -1,21 +1,21 @@
-import { IonicModule } from '@ionic/angular';
-import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
+import { IonicModule } from '@ionic/angular';
 import { Tab2Page } from './tab2.page';
-import { ExploreContainerComponentModule } from '../explore-container/explore-container.module';
 
+import { HoldModule } from '@/directives/hold/hold.module';
 import { Tab2PageRoutingModule } from './tab2-routing.module';
-import { ItemListActionsComponent } from './pop-ups/item-list-actions/item-list-actions.component';
+import { UserInfoDialogComponent } from './pop-ups/user-info-dialog/user-info-dialog.component';
 
 @NgModule({
   imports: [
     IonicModule,
     CommonModule,
     FormsModule,
-    ExploreContainerComponentModule,
-    Tab2PageRoutingModule
+    Tab2PageRoutingModule,
+    HoldModule,
   ],
-  declarations: [Tab2Page, ItemListActionsComponent]
+  declarations: [Tab2Page, UserInfoDialogComponent],
 })
 export class Tab2PageModule {}
