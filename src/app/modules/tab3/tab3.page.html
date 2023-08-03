@@ -1,8 +1,6 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
-    <ion-title>
-      Tab 3
-    </ion-title>
+    <ion-title> Tab 3 </ion-title>
   </ion-toolbar>
 </ion-header>
 
@@ -12,6 +10,11 @@
       <ion-title size="large">Tab 3</ion-title>
     </ion-toolbar>
   </ion-header>
+
+  <ion-button (click)="goToAuth()">Go to AUTH page</ion-button>
+  <a routerLink="/auth/register">
+    <ion-button>Go to REGISTER page</ion-button>
+  </a>
 
   <app-explore-container name="Tab 3 page"></app-explore-container>
 </ion-content>
