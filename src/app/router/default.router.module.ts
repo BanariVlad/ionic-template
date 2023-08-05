@@ -1,3 +1,4 @@
+import { authGuard } from '@/guards/auth.guard';
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { Route, RouterModule } from '@angular/router';
@@ -9,18 +10,19 @@ const routes: Route[] = [
       import('@/layouts/default/default.component').then(
         (m) => m.DefaultComponent
       ),
+    canActivate: [authGuard],
     children: [
+      {
+        path: '',
+        redirectTo: '/tabs/tab1',
+        pathMatch: 'full',
+      },
       {
         path: 'tabs',
         loadChildren: () =>
           import('@/modules/tabs/tabs.module').then((m) => m.TabsPageModule),
       },
     ],
-  },
-  {
-    path: '',
-    redirectTo: '/tabs/tab1',
-    pathMatch: 'full',
   },
 ];
 
