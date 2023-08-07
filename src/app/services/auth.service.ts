@@ -9,17 +9,18 @@ import { Observable } from 'rxjs';
 export class AuthService {
   private auth$: Observable<AuthState>;
 
-  constructor(private store: Store<{ auth: AuthState }>) {
-    this.auth$ = store.select('auth');
+  constructor(private store: Store) {
+    // this.auth$ = this.store.select('auth');
   }
 
   get isAuthenticated(): boolean {
-    let authenticated = false;
+    // let authenticated = false;
 
-    this.auth$.subscribe((auth) => {
-      authenticated = !!auth.token;
-    });
+    // this.auth$.subscribe((auth) => {
+    // authenticated = !!auth.token;
+    // });
 
-    return authenticated;
+    // return authenticated;
+    return false;
   }
 }

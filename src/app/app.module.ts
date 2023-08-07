@@ -7,7 +7,7 @@ import { IonicModule, IonicRouteStrategy } from '@ionic/angular';
 import { StoreModule } from '@ngrx/store';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { config, reducers } from './store';
+import { reducers } from './store';
 
 @NgModule({
   declarations: [AppComponent],
@@ -15,7 +15,7 @@ import { config, reducers } from './store';
     BrowserModule,
     AppRoutingModule,
     IonicModule.forRoot(),
-    StoreModule.forRoot(reducers, config),
+    StoreModule.forRoot(reducers),
   ],
   providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy }],
   bootstrap: [AppComponent],

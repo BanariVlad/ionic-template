@@ -1,4 +1,4 @@
-import { authGuard } from '@/guards/auth.guard';
+import { AuthGuard } from '@/guards/auth.guard';
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { Route, RouterModule } from '@angular/router';
@@ -10,7 +10,7 @@ const routes: Route[] = [
       import('@/layouts/default/default.component').then(
         (m) => m.DefaultComponent
       ),
-    canActivate: [authGuard],
+    canActivate: [AuthGuard],
     children: [
       {
         path: '',

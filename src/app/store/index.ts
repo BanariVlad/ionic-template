@@ -7,6 +7,4 @@ export interface AppState {
 
 const reducers = { auth: authReducer };
 
-const config = {};
-
-export { config, reducers };
+export { reducers };
