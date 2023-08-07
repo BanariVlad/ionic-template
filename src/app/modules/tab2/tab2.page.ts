@@ -1,23 +1,30 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ActionSheetController, ModalController } from '@ionic/angular';
 import { UserInfoDialogComponent } from './pop-ups/user-info-dialog/user-info-dialog.component';
+import { PostsStore } from './store/posts-store';
 
 @Component({
   selector: 'app-tab2',
   templateUrl: 'tab2.page.html',
   styleUrls: ['tab2.page.scss'],
+  providers: [PostsStore],
 })
-export class Tab2Page {
+export class Tab2Page implements OnInit {
+  vm$ = this.postsStore.vm$;
+
   constructor(
+    private postsStore: PostsStore,
     public actionSheetController: ActionSheetController,
     private modalCtrl: ModalController
   ) {}
 
+  ngOnInit(): void {
+    this.postsStore.getPosts();
+  }
+
   handleRefresh(event: any) {
-    setTimeout(() => {
-      // Any calls to load data go here
-      event.target.complete();
-    }, 2000);
+    this.postsStore.getPosts();
+    event.target.complete();
   }
 
   async presentActionSheet(item: any) {
