@@ -1,8 +1,10 @@
+import { LoadingHide, LoadingShow } from '@/store/loading/loading.actions';
+import { UserLogin } from '@/store/user/user.actions';
 import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { IonicModule } from '@ionic/angular';
-import { Store } from '@ngrx/store';
+import { Store } from '@ngxs/store';
 
 @Component({
   selector: 'app-login',
@@ -23,11 +25,14 @@ export class LoginComponent {
       token: '1234567890',
     };
 
-    this.store.dispatch({
-      type: '[Auth] Login',
-      props,
-    });
+    this.store.dispatch(new UserLogin(props));
 
-    this.router.navigate(['/tabs']);
+    this.store.dispatch(new LoadingShow());
+
+    this.router.navigate(['/tabs/tab3']);
+
+    setTimeout(() => {
+      this.store.dispatch(new LoadingHide());
+    }, 2000);
   }
 }

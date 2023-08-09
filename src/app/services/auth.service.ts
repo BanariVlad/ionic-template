@@ -1,26 +1,13 @@
-import { AuthState } from '@/store/auth/auth.selectors';
 import { Injectable } from '@angular/core';
-import { Store } from '@ngrx/store';
-import { Observable } from 'rxjs';
+import { Store } from '@ngxs/store';
 
 @Injectable({
   providedIn: 'root',
 })
 export class AuthService {
-  private auth$: Observable<AuthState>;
-
-  constructor(private store: Store) {
-    // this.auth$ = this.store.select('auth');
-  }
+  constructor(private store: Store) {}
 
   get isAuthenticated(): boolean {
-    // let authenticated = false;
-
-    // this.auth$.subscribe((auth) => {
-    // authenticated = !!auth.token;
-    // });
-
-    // return authenticated;
     return false;
   }
 }

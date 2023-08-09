@@ -1,29 +1,19 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { ActionSheetController, ModalController } from '@ionic/angular';
 import { UserInfoDialogComponent } from './pop-ups/user-info-dialog/user-info-dialog.component';
-import { PostsStore } from './store/posts-store';
 
 @Component({
   selector: 'app-tab2',
   templateUrl: 'tab2.page.html',
   styleUrls: ['tab2.page.scss'],
-  providers: [PostsStore],
 })
-export class Tab2Page implements OnInit {
-  vm$ = this.postsStore.vm$;
-
+export class Tab2Page {
   constructor(
-    private postsStore: PostsStore,
     public actionSheetController: ActionSheetController,
     private modalCtrl: ModalController
   ) {}
 
-  ngOnInit(): void {
-    this.postsStore.getPosts();
-  }
-
   handleRefresh(event: any) {
-    this.postsStore.getPosts();
     event.target.complete();
   }
 
@@ -66,8 +56,8 @@ export class Tab2Page implements OnInit {
     });
     await actionSheet.present();
 
-    const { role } = await actionSheet.onDidDismiss();
-    console.log('onDidDismiss resolved with role', role);
+    // const { role } = await actionSheet.onDidDismiss();
+    // console.log('onDidDismiss resolved with role', role);
   }
 
   async openModal() {

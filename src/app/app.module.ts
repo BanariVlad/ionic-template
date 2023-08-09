@@ -4,18 +4,19 @@ import { RouteReuseStrategy } from '@angular/router';
 
 import { IonicModule, IonicRouteStrategy } from '@ionic/angular';
 
-import { StoreModule } from '@ngrx/store';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { reducers } from './store';
+import { GlobalLoadingComponent } from './pages/global-loading/global-loading.component';
+import { StoreModule } from './store/store.module';
 
 @NgModule({
   declarations: [AppComponent],
   imports: [
     BrowserModule,
+    GlobalLoadingComponent,
     AppRoutingModule,
     IonicModule.forRoot(),
-    StoreModule.forRoot(reducers),
+    StoreModule,
   ],
   providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy }],
   bootstrap: [AppComponent],
