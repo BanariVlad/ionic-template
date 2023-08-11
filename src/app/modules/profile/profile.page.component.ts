@@ -1,4 +1,6 @@
+import { SetTheme } from '@/store/theme/theme.actions';
 import { Component, OnInit } from '@angular/core';
+import { Store } from '@ngxs/store';
 
 @Component({
   selector: 'app-profile.page',
@@ -8,26 +10,25 @@ import { Component, OnInit } from '@angular/core';
 export class ProfilePageComponent implements OnInit {
   themeToggle = false;
 
-  ngOnInit() {
+  constructor(private store: Store) {}
+
+  ngOnInit(): void {
     const prefersDark = window.matchMedia('(prefers-color-scheme: dark)');
 
-    this.initializeDarkTheme(prefersDark.matches);
+    this.themeToggle = prefersDark.matches;
 
-    prefersDark.addEventListener('change', (mediaQuery) =>
-      this.initializeDarkTheme(mediaQuery.matches)
-    );
+    prefersDark.addEventListener('change', (mediaQuery) => {
+      this.themeToggle = mediaQuery.matches;
+    });
   }
 
-  initializeDarkTheme(isDark: boolean) {
+  initializeDarkTheme(isDark: boolean): void {
     this.themeToggle = isDark;
-    this.toggleDarkTheme(isDark);
+
+    this.store.dispatch(new SetTheme(isDark));
   }
 
-  toggleChange(event: any) {
-    this.toggleDarkTheme(event.detail.checked);
-  }
-
-  toggleDarkTheme(shouldAdd: boolean) {
-    document.body.classList.toggle('dark', shouldAdd);
+  toggleChange(event: any): void {
+    this.store.dispatch(new SetTheme(event.detail.checked));
   }
 }

@@ -29,7 +29,7 @@ export class LoginComponent {
 
     this.store.dispatch(new LoadingShow());
 
-    this.router.navigate(['/tabs/tab3']);
+    this.router.navigate(['/tabs/profile']);
 
     setTimeout(() => {
       this.store.dispatch(new LoadingHide());

@@ -1,9 +1,10 @@
 import { transition, trigger, useAnimation } from '@angular/animations';
-import { Component } from '@angular/core';
-import { Select } from '@ngxs/store';
+import { Component, OnInit } from '@angular/core';
+import { Select, Store } from '@ngxs/store';
 import { fadeIn, fadeOut } from 'ng-animate';
 import { Observable } from 'rxjs';
 import { LoadingState } from './store/loading/loading.state';
+import { SetTheme } from './store/theme/theme.actions';
 
 @Component({
   selector: 'app-root',
@@ -26,6 +27,18 @@ import { LoadingState } from './store/loading/loading.state';
     ]),
   ],
 })
-export class AppComponent {
+export class AppComponent implements OnInit {
   @Select(LoadingState.isLoading) isLoading$: Observable<boolean>;
+
+  constructor(private store: Store) {}
+
+  ngOnInit(): void {
+    const prefersDark = window.matchMedia('(prefers-color-scheme: dark)');
+
+    this.store.dispatch(new SetTheme(prefersDark.matches));
+
+    prefersDark.addEventListener('change', (mediaQuery) =>
+      this.store.dispatch(new SetTheme(mediaQuery.matches))
+    );
+  }
 }
