@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "1021605795960",
+    "project_id": "ionic-push-notifications-a3f58",
+    "storage_bucket": "ionic-push-notifications-a3f58.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1021605795960:android:cffa7b7a5e5847f8a3f58d",
+        "android_client_info": {
+          "package_name": "dev.demo.firebase.pushnotifications"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1021605795960-q2ahhms03tv5c0hs0m8rtisp9buaqokc.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCgQhP0sP1S9xPv3AwuesBJS4ssu1MBq4Q"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1021605795960-q2ahhms03tv5c0hs0m8rtisp9buaqokc.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
